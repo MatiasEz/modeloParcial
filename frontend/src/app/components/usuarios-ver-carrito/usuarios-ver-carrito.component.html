@@ -1,0 +1,60 @@
+<p>usuarios-ver-carrito works!</p>
+
+<br>
+<br>
+<table border="1" style="width:60%">
+    <thead>
+        <th>Articulo</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+    </thead>
+    <tbody *ngIf="productos.length > 0; else fila">
+        <tr *ngFor=" let prod of productos">
+            <td>{{prod.id}}</td>
+            <td>{{prod.precio}}</td>
+            <td>{{prod.nombre}}</td>
+            <td>{{prod.cantidad}}</td>
+            <td>{{prod.subtotal}}</td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+<br>
+
+<table border="1" style="width:60%">
+    <thead>
+        <th>TOTAL:</th>
+    </thead>
+    <td>{{total}}</td>
+</table>
+<br>
+<br>
+
+<h4>Dirección de entrega:</h4>
+
+<form (submit)="grabarPedido()">
+    <table border="1" style="width:60%">
+        <thead>
+            <th>Calle</th>
+            <th>Altura</th>
+        </thead>
+        <tr>
+            <td><input type="text" name="calle" [(ngModel)]="direccion.calle"></td>
+            <td><input type="number" name="altura" [(ngModel)]="direccion.altura"></td>
+            <td><button class="btn btn-success">Confirmar Pedido</button></td>
+        </tr>
+    </table>
+</form>
+
+<div align="left"> <br>
+<h3>Volver:</h3>
+<a class="btn btn-info" routerLink="/usuarios/carrito">Volver<span class="sr-only">(current)</span></a>
+</div>

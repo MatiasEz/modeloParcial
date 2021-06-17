@@ -1,0 +1,11 @@
+TEMAS A ESTUDIAR PARA 2do Parcial:
+---------------------------------
+
+* Tener realizado el parcial 1 y su recuperatorio - DONE
+* Tener preparado proyecto de Angular para el P1 y recuperatorio - WIP
+* Token + AuthGuard - DONE
+* RegEx - WIP
+* CSS -> Inline, por componente y css general - WIP
+* Boostrap - WIP
+* Mensajes/Alertas popups - BACKLOCK
+

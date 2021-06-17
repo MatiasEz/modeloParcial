@@ -1,0 +1,34 @@
+<p>admin-listar-pedidos works!</p>
+<br>
+<br>
+<table border="1" style="width:60%">
+    <thead>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>Calle</th>
+        <th>Altura</th>
+        <th>Total</th>
+    </thead>
+    <tbody *ngIf="pedidos.length > 0; else fila">
+        <tr *ngFor=" let pedi of pedidos">
+            <td>{{pedi.id}}</td>
+            <td>{{pedi.fecha}}</td>
+            <td>{{pedi.calle}}</td>
+            <td>{{pedi.altura}}</td>
+            <td>{{pedi.total}}</td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+<br>
+
+<div align="left"> <br>
+    <a class="btn btn-info" routerLink="/usuarios/home">Volver</a>
+</div>

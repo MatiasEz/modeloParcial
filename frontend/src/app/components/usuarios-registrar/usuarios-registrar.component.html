@@ -1,0 +1,54 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Sign Up</h3>
+                </div>
+                <div *ngIf="!registroEnv" class="card-body">
+                    <form (submit)="registrar()">
+                        <div class="form-group">
+                            <input type="text" name="nombre" [(ngModel)]="user.nombre" placeholder="Nombre"
+                                class="form-control" (focus)="limpiarNombre()">
+                            <div [ngSwitch]="errorNombre">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Nombre muy largo</div>
+                                <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
+                            </div>
+                            <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña"
+                                class="form-control" (focus)="limpiarPassword()">
+                            <div [ngSwitch]="errrorPassword">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Contraseña muy larga</div>
+                                <div *ngSwitchCase="3">La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos. Ejemplo: w3Unpocodet0d0 </div>
+                            </div>
+                            <input type="password" name="repassword" [(ngModel)]="user.repassword"
+                                placeholder="Repetir Contraseña" class="form-control" (focus)="limpiarRePassword()">
+                            <div [ngSwitch]="errorRePassrword">
+                                <div *ngSwitchCase="1">Las contraseñas deben ser iguales</div>
+                            </div>
+                            <input type="email" name="email" [(ngModel)]="user.email" placeholder="email"
+                                class="form-control" (focus)="limpiarEmail()">
+                            <div [ngSwitch]="errorEmail">
+                                <div *ngSwitchCase="1">Debes completar el campo</div>
+                                <div *ngSwitchCase="2">Email muy largo</div>
+                                <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
+                            </div>
+                            <button class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="registroEnv" class="card-body">
+                    <div *ngIf="registroOk" class="card-body">
+                        {{mensaje}} <br>
+                        <a class="btn btn-info" (click)=iniciarSesion()>Iniciar Sesion</a>
+                    </div>
+                    <div *ngIf="!registroOk" class="card-body">
+                        {{mensaje}} <br>
+                        <a class="btn btn-info" (click)=reintentarReg()>Reintentar registro</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

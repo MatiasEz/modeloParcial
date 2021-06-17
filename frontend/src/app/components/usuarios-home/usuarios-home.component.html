@@ -1,0 +1,13 @@
+<body>
+    <div class="container" id="center" [ngSwitch]="rol" style="background-color: rgb(0, 89, 255);">
+        <div *ngSwitchCase="'admin'">
+            <a class="btn btn-danger" routerLink="/usuarios/carrito" style="height: 25%;">Probar Carrito</a>
+            <a class="btn btn-danger" routerLink="/admin/listar-pedidos">Listar Pedidos</a>
+            <a class="btn btn-danger" routerLink="/admin/abm">ABM Productos</a>
+        </div>
+        <div id="center2" *ngSwitchCase="'user'">
+            <a class="btn btn-danger" routerLink="/usuarios/carrito" style="margin: 3px;">Carrito</a>
+            <a class="btn btn-danger" routerLink="/usuarios/listar" style="margin: 3px;">Listar ABM</a>
+        </div>
+    </div>
+</body>

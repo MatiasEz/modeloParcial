@@ -1,0 +1,39 @@
+
+<div class="container">
+
+<table border="1" style="width:100%">
+    <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Rol</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody *ngIf="usuarios.length > 0; else fila">
+        <tr *ngFor=" let user of usuarios">
+            <td><input type="text" name="id" [(ngModel)]="user.id" class=" form-control" readonly></td>
+            <td><input type="text" name="nombre" [(ngModel)]="user.nombre" class="form-control" autofocus></td>
+            <td><input type="text" name="email" [(ngModel)]="user.email" class="form-control"></td>
+            <td><input type="password" name="password" [(ngModel)]="user.password" class="form-control"></td>
+            <td><input type="text" name="rol" [(ngModel)]="user.rol" class="form-control"></td>
+            <td><a class="btn btn-info" (click)=modificarUsuario(user)>Modificar</a></td>
+            <td><a class="btn btn-danger" (click)=eliminarUsuario(user)>Eliminar</a></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+
+</div>
+
+<div> <br>
+    <h5>Volver:</h5>
+    <a class="btn btn-info" routerLink="/usuarios/home">Volver<span class="sr-only">(current)</span></a>
+</div>

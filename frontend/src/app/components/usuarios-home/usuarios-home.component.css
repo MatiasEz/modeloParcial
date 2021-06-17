@@ -1,0 +1,17 @@
+
+#center {
+    height: 20%;
+    width: 30%;
+    top: 40%;
+    left: 35%;
+    text-align: center;
+    background-color: blue;
+    position: absolute;
+  }
+
+#center2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}

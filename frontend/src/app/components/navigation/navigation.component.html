@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="usuarios/principal">Principal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" *ngIf="!loginOkMostrar">
+
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="usuarios/ingresar">Iniciar sesión<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="usuarios/registrar">Registrarse</a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav" *ngIf="loginOkMostrar">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="usuarios/home">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="usuarios/listar">Listar ABM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="usuarios/carrito">Carrito</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="admin/abm">Admin ABM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="admin/listar-pedidos">Admin Listar Pedidos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="logout" (click)="logout()">Cerrar sesion</a>
+            </li>
+        </ul>
+    </div>
+</nav>

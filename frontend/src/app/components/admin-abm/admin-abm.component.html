@@ -1,0 +1,70 @@
+<p>admin-abm works!</p>
+
+<tbody *ngIf="alert">
+    <div id="aviso">
+    <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong> Articulo Actualizado correctamente </strong>
+    </div>
+    </div>
+</tbody>
+
+<br>
+<div class="container">
+<table class="table table-dark table-hover">
+    <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody *ngIf="productos.length > 0; else fila">
+        <tr *ngFor=" let prod of productos">
+            <td><input type="text" name="id" [(ngModel)]="prod.id" class=" form-control" readonly></td>
+            <td><input type="text" name="nombre" [(ngModel)]="prod.nombre" class="form-control" autofocus required></td>
+            <td><input type="text" name="precio" [(ngModel)]="prod.precio" class="form-control" required></td>
+            <td><button class="btn btn-info" (click)=modificarProducto(prod)>Modificar</button></td>
+            <td><a class="btn btn-danger" (click)=eliminarProducto(prod)>Eliminar</a></td>
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+</div>
+
+
+
+<form (submit)="agregarProducto()">
+    <div style="left:auto"> <br>
+        <div style= "left: auto;">
+            <h3>Agregar produto:</h3>
+        </div> 
+        <div class="form-group">
+        Descripción:   
+        <input type="text" name="nombre" [(ngModel)]="prod.nombre" autofocus>
+        <div [ngSwitch]="errorPrecio">
+            <div *ngSwitchCase="1">Debes completar el campo</div>
+            <div *ngSwitchCase="2">Nombre muy largo</div>
+            <div *ngSwitchCase="3">Nombre debe ser numero</div>
+        </div>
+        Precio $: <input type="number" name="precio" [(ngModel)]="prod.precio">
+        <div [ngSwitch]="errorNombre">
+            <div *ngSwitchCase="1">Debes completar el campo</div>
+            <div *ngSwitchCase="2">Nombre muy largo</div>
+            <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
+        </div>
+        </div>
+        <button (click)="verificarForm()" class="btn btn-success">Enviar</button>
+    </div>
+</form>
+
+<div style="left:auto"> <br>
+    <h3>Volver:</h3>
+    <a class="btn btn-info" routerLink="/usuarios/home">Volver<span class="sr-only">(current)</span></a>
+</div>
